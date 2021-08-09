@@ -29,7 +29,6 @@ screen.onkey(left_paddle.up, "w")
 screen.onkey(left_paddle.down, "s")
 
 
-
 # Starts game
 game_on = True
 while game_on:
@@ -41,17 +40,20 @@ while game_on:
     # Bounce off paddle
     if ball.distance(right_paddle) < 50 and ball.xcor() > 330 or ball.distance(left_paddle) < 50 and ball.xcor() < -330:
         ball.paddle_bounce()
+        ball.increase_speed()
     # Out of bounds
     if ball.xcor() > 350:
-        score.left_score += 1
-        score.update_scoreboard()
+        score.left_point()
         ball.goto(0,0)
         screen.update()
+        ball.reset_speed()
         ball.reset_ball()
     if ball.xcor() < -350:
-        score.right_score += 1
-        score.update_scoreboard()
-        ball.goto(0,0)
+        score.right_point()
+        ball.goto(0, 0)
         screen.update()
+        ball.reset_speed()
         ball.reset_ball()
+
+
 screen.exitonclick()

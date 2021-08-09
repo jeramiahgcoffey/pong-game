@@ -1,6 +1,7 @@
 from turtle import Turtle
 FONT = ("Courier", 30, "bold")
 
+
 class Scoreboard(Turtle):
     def __init__(self):
         super().__init__()
@@ -15,3 +16,11 @@ class Scoreboard(Turtle):
     def update_scoreboard(self):
         self.clear()
         self.write(f"Score: {self.left_score}     Score: {self.right_score}", align="center", font=FONT)
+
+    def left_point(self):
+        self.left_score += 1
+        self.update_scoreboard()
+
+    def right_point(self):
+        self.right_score += 1
+        self.update_scoreboard()
